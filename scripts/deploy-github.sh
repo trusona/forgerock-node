@@ -3,10 +3,10 @@
 set -e
 
 ORG=trusona
-REPO=forgerock-module
+REPO=forgerock-node
 
 FILE=$(ls target/*-all.jar)
-FILE=${FILE##*/}
+FILENAME=${FILE##*/}
 
 if [ -z "${TRAVIS_TAG}" ]; then
   echo "This script requires TRAVIS_TAG to be set"
@@ -28,5 +28,5 @@ echo "created release with id ${release_id}"
 curl -v \
   -H "Content-Type: application/java-archive" \
   -H "Authorization: token ${GITHUB_TOKEN}" \
-  "https://uploads.github.com/repos/${ORG}/${REPO}/releases/${release_id}/assets?name=${FILE}" \
-  -d "@target/${FILE}"
+  "https://uploads.github.com/repos/${ORG}/${REPO}/releases/${release_id}/assets?name=${FILENAME}" \
+  -d "@${FILE}"
