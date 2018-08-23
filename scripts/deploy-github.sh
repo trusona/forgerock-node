@@ -17,7 +17,7 @@ if [ -z "${GITHUB_TOKEN}" ]; then
   exit 1
 fi
 
-release_id=$(curl -v \
+release_id=$(curl \
   -H "Content-type: application/json" \
   -H "Authorization: token ${GITHUB_TOKEN}" \
   "https://api.github.com/repos/${ORG}/${REPO}/releases" \
@@ -25,7 +25,7 @@ release_id=$(curl -v \
 
 echo "created release with id ${release_id}"
 
-curl -v \
+curl \
   -H "Content-Type: application/java-archive" \
   -H "Authorization: token ${GITHUB_TOKEN}" \
   "https://uploads.github.com/repos/${ORG}/${REPO}/releases/${release_id}/assets?name=${FILENAME}" \
