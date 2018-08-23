@@ -27,4 +27,4 @@ curl \
   -H "Content-Type: application/java-archive" \
   -H "Authorization: token ${GITHUB_TOKEN}" \
   "https://uploads.github.com/repos/${ORG}/${REPO}/releases/${release_id}/assets?name=${FILE}" \
-  -d "@forgerock-node/target/${FILE}"
+  -d "@target/${FILE}"
