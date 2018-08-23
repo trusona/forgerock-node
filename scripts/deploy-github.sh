@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 ORG=trusona
 REPO=forgerock-module
 
@@ -15,7 +17,7 @@ if [ -z "${GITHUB_TOKEN}" ]; then
   exit 1
 fi
 
-release_id=$(curl \
+release_id=$(curl -v \
   -H "Content-type: application/json" \
   -H "Authorization: token ${GITHUB_TOKEN}" \
   "https://api.github.com/repos/${ORG}/${REPO}/releases" \
@@ -23,7 +25,7 @@ release_id=$(curl \
 
 echo "created release with id ${release_id}"
 
-curl \
+curl -v \
   -H "Content-Type: application/java-archive" \
   -H "Authorization: token ${GITHUB_TOKEN}" \
   "https://uploads.github.com/repos/${ORG}/${REPO}/releases/${release_id}/assets?name=${FILE}" \
