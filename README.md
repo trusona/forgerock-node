@@ -7,24 +7,24 @@ The Trusona AM Authentication node is developed against and supported on version
 
 ## Installation
 
-To install the Trusona Forgerock Node, download the latest `trusona-forgerock-node-x.x.x-all.jar` from the [releases page](https://github.com/trusona/forgerock-module/releases), copy the jar into `WEB-INF/lib/` where AM is deployed, and then restart AM or the container in which it runs. See [Building and Installing Authentication Nodes](https://backstage.forgerock.com/docs/am/6/authentication-guide/#installing-custom-auth-nodes) for more details on installing custom authentication nodes.
+To install the Trusona Forgerock Node, download the latest `trusona-forgerock-node-x.x.x-all.jar` from the [releases page](https://github.com/trusona/forgerock-node/releases), copy the jar into `WEB-INF/lib/` where AM is deployed, and then restart AM or the container in which it runs. See [Building and Installing Authentication Nodes](https://backstage.forgerock.com/docs/am/6/authentication-guide/#installing-custom-auth-nodes) for more details on installing custom authentication nodes.
 
 
 ## Configuration
 
-Before configuring the module, make sure you have your Trusona API token and secret. You will need to provide these values to the module so it can create Trusonafications. For steps on how to configure Authentication Trees and Nodes, see the [ForgeRock AM docs](https://backstage.forgerock.com/docs/am/6/authentication-guide/#sec-configure-authentication-trees). When you are adding the Trusona Authentication Node to a Tree, you will need to provide the following configuration values:
+Before configuring the node, make sure you have your Trusona API token and secret. You will need to provide these values to the node so it can create Trusonafications. For steps on how to configure Authentication Trees and Nodes, see the [ForgeRock AM docs](https://backstage.forgerock.com/docs/am/6/authentication-guide/#sec-configure-authentication-trees). When you are adding the Trusona Authentication Node to a Tree, you will need to provide the following configuration values:
 
 1. Action - A string that will be used in the action field of a Trusonafication. See the following section for more details.
 1. Resource - string that will be used in the resoure field of a Trusonafication. See the following section for more details.
-1. Trusona API Token - The API token you received from Trusona. This will be used to authenticate your module to Trusona's backend services.
-1. Trusona API Secret - The API secret you received from Trusona. This will be used to authenticate your module to Trusona's backend services.
+1. Trusona API Token - The API token you received from Trusona. This will be used to authenticate your node to Trusona's backend services.
+1. Trusona API Secret - The API secret you received from Trusona. This will be used to authenticate your node to Trusona's backend services.
 1. Deeplink URL - The URL that the user will be redirected to when they are on a mobile browser. This URL should be handled by the mobile app users will authenticate with. If not set, the user will be sent to the Trusona App.
 1. Alias Search Attributes - A list of attributes to use when looking up a ForgeRock user for a Trusona email address or `userIdentifier`. See [Mapping Trusona Users to ForgeRockSubjects](#Mapping Trusona Users to ForgeRock Subjects) below for more information.
 
 
 ### The Action and Resource fields
 
-When you attempt to authenticate a user with this module, a Trusonafication will be issued for the user. The Accept/Reject screen for the Trusonafication will use the action and resource to display a sentence in the format "$customer_name would like to confirm your $action to $resource". So if you configure Action to be "login", and your Resource to be "ForgeRock", the sentence will read "$customer_name would like to confirm your login to ForgeRock"
+When you attempt to authenticate a user with this node, a Trusonafication will be issued for the user. The Accept/Reject screen for the Trusonafication will use the action and resource to display a sentence in the format "$customer_name would like to confirm your $action to $resource". So if you configure Action to be "login", and your Resource to be "ForgeRock", the sentence will read "$customer_name would like to confirm your login to ForgeRock"
 
 
 ### Mapping Trusona Users to ForgeRock Subjects
@@ -52,7 +52,7 @@ Alternatively, you could also consult the OpenAM documentation to add [custom pr
 
 ## Usage
 
-The node comes with a front end JavaScript app that handles the rendering of TruCodes, and redirecting users to their Trusona supported mobile apps when used with ForgeRocks' XUI. The following sections describe how the module works for both Desktop and Mobile users.
+The node comes with a front end JavaScript app that handles the rendering of TruCodes, and redirecting users to their Trusona supported mobile apps when used with ForgeRocks' XUI. The following sections describe how the node works for both Desktop and Mobile users.
 
 ### Desktop Users
 
