@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 set -ev
 
 DOCKER_TAG=trusona/forgerock-example:latest

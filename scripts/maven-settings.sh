@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -13,7 +13,4 @@ cat ${dir}/settings.xml.template | \
   sed "s/\${artifactoryUsername}/${ARTIFACTORY_USERNAME}/g" | \
   sed "s/\${artifactoryPassword}/${ARTIFACTORY_PASSWORD}/g" | \
   sed "s/\${forgerockMavenUsername}/${FORGEROCK_MAVEN_USERNAME}/g" | \
-  sed "s/\${forgerockMavenPassword}/${FORGEROCK_MAVEN_PASSWORD}/g" \
-  > ${dir}/settings.xml
-
-
+  sed "s/\${forgerockMavenPassword}/${FORGEROCK_MAVEN_PASSWORD}/g" > ${dir}/settings.xml
