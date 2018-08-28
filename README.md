@@ -19,7 +19,7 @@ Before configuring the node, make sure you have your Trusona API token and secre
 1. Trusona API Token - The API token you received from Trusona. This will be used to authenticate your node to Trusona's backend services.
 1. Trusona API Secret - The API secret you received from Trusona. This will be used to authenticate your node to Trusona's backend services.
 1. Deeplink URL - The URL that the user will be redirected to when they are on a mobile browser. This URL should be handled by the mobile app users will authenticate with. If not set, the user will be sent to the Trusona App.
-1. Alias Search Attributes - A list of attributes to use when looking up a ForgeRock user for a Trusona email address or `userIdentifier`. See [Mapping Trusona Users to ForgeRockSubjects](#mapping-trusona-users-to-forgerock-subjects) below for more information.
+1. Alias Search Attributes - A list of attributes to use when looking up a ForgeRock user for a Trusona email address or `userIdentifier`. See [Mapping Trusona Users to ForgeRock Subjects](#mapping-trusona-users-to-forgerock-subjects) below for more information.
 
 ### The Action and Resource fields
 
