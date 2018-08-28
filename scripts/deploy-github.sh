@@ -26,7 +26,7 @@ release_id=$(curl \
 echo "created release with id ${release_id}"
 
 curl \
-  -H "Content-Type: application/java-archive" \
+  -H "Content-Type: application/octet-stream" \
   -H "Authorization: token ${GITHUB_TOKEN}" \
   "https://uploads.github.com/repos/${ORG}/${REPO}/releases/${release_id}/assets?name=${FILENAME}" \
   -d "@${FILE}"
