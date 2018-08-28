@@ -19,12 +19,24 @@ Before configuring the node, make sure you have your Trusona API token and secre
 1. Trusona API Token - The API token you received from Trusona. This will be used to authenticate your node to Trusona's backend services.
 1. Trusona API Secret - The API secret you received from Trusona. This will be used to authenticate your node to Trusona's backend services.
 1. Deeplink URL - The URL that the user will be redirected to when they are on a mobile browser. This URL should be handled by the mobile app users will authenticate with. If not set, the user will be sent to the Trusona App.
-1. Alias Search Attributes - A list of attributes to use when looking up a ForgeRock user for a Trusona email address or `userIdentifier`. See [Mapping Trusona Users to ForgeRockSubjects](#Mapping Trusona Users to ForgeRock Subjects) below for more information.
-
+1. Alias Search Attributes - A list of attributes to use when looking up a ForgeRock user for a Trusona email address or `userIdentifier`. See [Mapping Trusona Users to ForgeRockSubjects](#mapping-trusona-users-to-forgerock-subjects) below for more information.
 
 ### The Action and Resource fields
 
 When you attempt to authenticate a user with this node, a Trusonafication will be issued for the user. The Accept/Reject screen for the Trusonafication will use the action and resource to display a sentence in the format "$customer_name would like to confirm your $action to $resource". So if you configure Action to be "login", and your Resource to be "ForgeRock", the sentence will read "$customer_name would like to confirm your login to ForgeRock"
+
+### Node Outcomes
+
+The node has four different Outcomes. They are as follows:
+
+1. Accepted - The user successfully accepted the issued Trusonafication. They have been authenticated by Trusona.
+1. Rejected - The user rejected the issued Trusonafication. This means the user explicitly chose to deny this authentication request.
+1. Expired - The Trusonafication expired before a response was received from the user. This should be handled as a failed authentication attempt.
+1. Error - A fatal error occurred during the authentication attempt. If this happens check the `TrusonaAuth` debug logs to determine the cause and contact Trusona Support if needed.
+
+### Example Node Configuration
+
+![Example node configuration](./example-node-configuration.png)
 
 
 ### Mapping Trusona Users to ForgeRock Subjects
@@ -60,13 +72,3 @@ Desktop users will see a TruCode in their browser that they will need to scan wi
 
 ### Mobile Users
 On mobile devices, instead of seeing a TruCode, to users will be deeplinked into their Trusona enabled mobile app, where they will be presented with a Trusonafication. Once accepted, the app will send the user back to the browser, where the node will continue down the `Accepted` outcome path.
-
-### Node Outcomes
-
-The node has four different Outcomes. They are as follows:
-
-1. Accepted - The user successfully accepted the issued Trusonafication. They have been authenticated by Trusona.
-1. Rejected - The user rejected the issued Trusonafication. This means the user explicitly chose to deny this authentication request.
-1. Expired - The Trusonafication expired before a response was received from the user. This should be handled as a failed authentication attempt.
-1. Error - A fatal error occurred during the authentication attempt. If this happens check the `TrusonaAuth` debug logs to determine the cause and contact Trusona Support if needed.
-
