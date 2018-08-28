@@ -14,7 +14,7 @@
     This is the Trusona ForgeRock Node for ForgeRock AM that allows you to authenticate users with
     Trusona.
   </description>
-  <url>https://github.com/trusona/forgerock-module</url>
+  <url>https://github.com/trusona/forgerock-node</url>
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>

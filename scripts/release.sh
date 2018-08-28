@@ -27,14 +27,14 @@ fi
 PLUGIN_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version 2>/dev/null | egrep -ve "\[.*\]")
 TAG_NAME="${PLUGIN_VERSION}"
 
-git tag -f -a ${TAG_NAME} -m "release ${TAG_NAME}"
-
 echo -n "Do you want to publish version ${PLUGIN_VERSION} now? [y/N]: "
 read RESPONSE
+
+git tag -f -a ${TAG_NAME} -m "release ${TAG_NAME}"
 
 if [ "${RESPONSE}" == y ] || [ "${RESPONSE}" == Y ]; then
   git push --set-upstream origin ${TAG_NAME} -f
 else
   echo -e "Run the following command to publish release:\n"
-  echo -e "git push --set-upstream origin ${TAG_NAME} \n"
+  echo -e "git push --set-upstream origin ${TAG_NAME} -f \n"
 fi
