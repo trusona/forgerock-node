@@ -17,16 +17,14 @@ if [ -z "${GITHUB_TOKEN}" ]; then
   exit 1
 fi
 
-release_id=$(curl \
+release_id=$(curl -X POST \
   -H "Content-type: application/json" \
-  -H "Authorization: token ${GITHUB_TOKEN}" \
-  "https://api.github.com/repos/${ORG}/${REPO}/releases" \
+  -H "Authorization: token ${GITHUB_TOKEN}" "https://api.github.com/repos/${ORG}/${REPO}/releases" \
   -d "{\"tag_name\": \"${TRAVIS_TAG}\", \"name\": \"${TRAVIS_TAG}\"}" | jq .id)
 
 echo "created release with id ${release_id}"
 
-curl \
-  -H "Content-Type: application/zip" \
-  -H "Authorization: token ${GITHUB_TOKEN}" \
-  "https://uploads.github.com/repos/${ORG}/${REPO}/releases/${release_id}/assets?name=${FILENAME}" \
-  -d "@${FILE}"
+curl -X POST \
+  -H "Content-Type: application/octet-stream" \
+  -H "Authorization: token ${GITHUB_TOKEN}" "https://uploads.github.com/repos/${ORG}/${REPO}/releases/${release_id}/assets?name=${FILENAME}" \
+  --data-binary "@${FILE}"
