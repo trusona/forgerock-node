@@ -35,8 +35,7 @@
   <contributors/>
 
   <properties>
-    <trusona.sdk.version>3.4.1</trusona.sdk.version>
-    <trusona.common.version>1.2.3-SNAPSHOT</trusona.common.version>
+    <trusona.common.version>1.2.3</trusona.common.version>
     <commons-lang3.version>3.7</commons-lang3.version>
     <forgerock.version>5.5.1</forgerock.version>
     <retrofit.version>2.4.0</retrofit.version>
