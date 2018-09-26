@@ -101,7 +101,7 @@ public class StateDelegate {
   }
 
   private Supplier<Action> waitForStateFromTrusonaficationId(TreeContext treeContext, UUID trusonaficationId) {
-      String realm = orgFromRealm.apply(treeContext.sharedState.get(REALM).asString());
+      String realm = treeContext.sharedState.get(REALM).asString();
       IdentityFinder identityFinder = new IdentityFinder(userAliases, realm);
       PrincipalMapper principalMapper = new DefaultPrincipalMapper(trusonaClient, identityFinder);
 
