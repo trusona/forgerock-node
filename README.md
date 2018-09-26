@@ -72,3 +72,6 @@ Desktop users will see a TruCode in their browser that they will need to scan wi
 
 ### Mobile Users
 On mobile devices, instead of seeing a TruCode, to users will be deeplinked into their Trusona enabled mobile app, where they will be presented with a Trusonafication. Once accepted, the app will send the user back to the browser, where the node will continue down the `Accepted` outcome path.
+
+## Note
+When a user authenticates with Trusona, the username field is populated in shared state, which may overwrite any value put there by any other node that executed before Trusona.
