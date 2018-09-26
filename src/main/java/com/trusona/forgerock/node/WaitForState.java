@@ -76,7 +76,7 @@ public class WaitForState implements Supplier<Action> {
 
   private JsonValue stateWithUsername(String username) {
     JsonValue newState = currentState.copy();
-    newState.add(USERNAME, username);
+    newState.put(USERNAME, username);
 
     return newState;
   }
