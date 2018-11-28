@@ -14,7 +14,7 @@ before_deploy:
   - export PATH=$PATH:$HOME/.local/bin
 
 script:
-  - mvn -X -s data/settings.xml test
+  - mvn -U -s data/settings.xml test
 
 deploy:
   - provider: script
