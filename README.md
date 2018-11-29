@@ -14,12 +14,17 @@ To install the Trusona Forgerock Node, download the latest `trusona-forgerock-no
 
 Before configuring the node, make sure you have your Trusona API token and secret. You will need to provide these values to the node so it can create Trusonafications. For steps on how to configure Authentication Trees and Nodes, see the [ForgeRock AM docs](https://backstage.forgerock.com/docs/am/6/authentication-guide/#sec-configure-authentication-trees). When you are adding the Trusona Authentication Node to a Tree, you will need to provide the following configuration values:
 
-1. Action - A string that will be used in the action field of a Trusonafication. See the following section for more details.
-1. Resource - string that will be used in the resoure field of a Trusonafication. See the following section for more details.
 1. Trusona API Token - The API token you received from Trusona. This will be used to authenticate your node to Trusona's backend services.
 1. Trusona API Secret - The API secret you received from Trusona. This will be used to authenticate your node to Trusona's backend services.
+1. Authentication Level - The level that you want to authenticate the user at.
+1. Action - A string that will be used in the action field of a Trusonafication. See the following section for more details.
+1. Resource - string that will be used in the resoure field of a Trusonafication. See the following section for more details.
 1. Deeplink URL - The URL that the user will be redirected to when they are on a mobile browser. This URL should be handled by the mobile app users will authenticate with. If not set, the user will be sent to the Trusona App.
 1. Alias Search Attributes - A list of attributes to use when looking up a ForgeRock user for a Trusona email address or `userIdentifier`. See [Mapping Trusona Users to ForgeRock Subjects](#mapping-trusona-users-to-forgerock-subjects) below for more information.
+
+### Authentication Level
+Trusona supports two levels of authentication. The default level is Essential, which requires device security only (pin or biometric to unlock device). The Executive
+level is also supported, which requires the user to also scan their driver's license.
 
 ### The Action and Resource fields
 
