@@ -1,0 +1,70 @@
+apply plugin: "maven-publish"
+apply plugin: "com.jfrog.artifactory"
+
+artifactory {
+  contextUrl = "https://trusona.jfrog.io/trusona/"
+
+  publish {
+    repository {
+      repoKey = project.version.endsWith("-SNAPSHOT") ? "sdk-public-snapshots-local" : "sdk-public-releases-local"
+
+      username = ARTIFACTORY_USERNAME
+      password = ARTIFACTORY_PASSWORD
+      maven = true
+    }
+    defaults {
+      publications "mavenJava"
+      publishArtifacts = true
+      publishPom = true
+    }
+  }
+  resolve {
+    repository {
+      repoKey = project.version.endsWith("-SNAPSHOT") ? "sdk-public-snapshots-local" : "sdk-public-releases-local"
+
+      username = ARTIFACTORY_USERNAME
+      password = ARTIFACTORY_PASSWORD
+      maven = true
+    }
+  }
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      pom {
+        name = "Trusona ForgeRock Node"
+        description = "This is the Trusona ForgeRock Node for ForgeRock AM that allows you to authenticate users with Trusona."
+
+        licenses {
+          license {
+            name = "Apache License, Version 2.0"
+            url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+          }
+        }
+        organization {
+          name = "Trusona Inc"
+          url = "https://trusona.com"
+        }
+        developers {
+          developer {
+            id = "trusona-engineering"
+            name = "Engineering @ Trusona"
+            email = "engineering@trusona.com"
+          }
+        }
+        scm {
+          connection = "scm:git:https://github.com/trusona/forgerock-node.git"
+          developerConnection = "scm:git:https://github.com/trusona/forgerock-node.git"
+          url = "https://github.com/trusona/forgerock-node"
+        }
+      }
+
+      from components.java
+    }
+  }
+
+  repositories {
+    mavenLocal()
+  }
+}
