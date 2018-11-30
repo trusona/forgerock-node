@@ -5,16 +5,15 @@ set -e
 ORG=trusona
 REPO=forgerock-node
 
-FILE=$(ls target/*-all.jar)
-FILENAME=${FILE##*/}
+FILE=`find build/libs -name "*-all.jar"`
+FILENAME=`basename ${FILE}`
 
 if [ -z "${TRAVIS_TAG}" ]; then
-  echo "This script requires TRAVIS_TAG to be set"
-  exit 1
+  echo "This script requires TRAVIS_TAG to be set" && exit 1
 fi
+
 if [ -z "${GITHUB_TOKEN}" ]; then
-  echo "This script requires GITHUB_TOKEN to be set"
-  exit 1
+  echo "This script requires GITHUB_TOKEN to be set" && exit 2
 fi
 
 release_id=$(curl -X POST \
