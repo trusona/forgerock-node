@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/trusona/forgerock-node.svg?branch=master)](https://travis-ci.com/trusona/forgerock-node)
+
 # ForgeRock AM Authentication Node
 
 ## Supported Versions
