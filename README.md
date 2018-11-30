@@ -41,7 +41,7 @@ The node has four different Outcomes. They are as follows:
 
 ### Example Node Configuration
 
-![Example node configuration](./example-node-configuration.png)
+![Example node configuration](./images/example-node-configuration.png)
 
 
 ### Mapping Trusona Users to ForgeRock Subjects
@@ -53,16 +53,16 @@ To map your Trusona account to your ForgeRock profile, you'll provide one or mor
 
 The Trusona App uses verified email addresses as the user's identifiers. To map a Trusona App user, you can enter the `mail` LDAP attribute and it will look for ForgeRock profiles that contain a matching `Email Address`. See the screenshot below:
 
-![Using email to map users](./search-alias-by-mail.jpg)
+![Using email to map users](./images/search-alias-by-mail.jpg)
 
 
 #### Mapping Users Registered with the Trusona SDK
 
 If you are using the Trusona SDK within your own app, the Trusona identifier will be the `userIdentifier` that you used when you activated the user's device. If you registered the user using their ForgeRock ID then the mapping will automatically work. If you registered the user's email address, you can set it up to use `mail` and it will work the same as the Trusona App. Finally, if you are using a different type of identifier, you will need to ensure that the ID you registered with Trusona is represented as a field in the user's ForgeRock profile and the appropriate LDAP attribute is used as a search alias. One  way to do a custom mapping like this would be to add your identifier to the user's `User Alias List` in their profile, and then configure the `Alias Search Attributes` to use the LDAP attribute `iplanet-am-user-alias-list`.
 
-![Using an alias to map users](./search-alias-by-alias-list.jpg)
+![Using an alias to map users](./images/search-alias-by-alias-list.jpg)
 
-![Setting the alias](./user-alias-list.jpg)
+![Setting the alias](./images/user-alias-list.jpg)
 
 Alternatively, you could also consult the OpenAM documentation to add [custom profile attributes](https://backstage.forgerock.com/docs/am/5.5/maintenance-guide/#sec-maint-datastore-customattr) to store your identifier.
 
