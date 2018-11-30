@@ -28,11 +28,11 @@ apply from: "publishing.gradle"
 dependencies {
   compile "com.trusona.integration:trusona-forgerock-common:${project.version}"
 
-  compileOnly "org.forgerock.am:openam-shared:${forgerockVersion}"
   compileOnly "org.forgerock.am:openam-core:${forgerockVersion}"
+  compileOnly "org.forgerock.am:auth-node-api:${forgerockVersion}"
 
-  testCompile "org.forgerock.am:openam-shared:${forgerockVersion}"
   testCompile "org.forgerock.am:openam-core:${forgerockVersion}"
+  testCompile "org.forgerock.am:auth-node-api:${forgerockVersion}"
 
   testCompile "org.spockframework:spock-core:1.1-groovy-2.4"
   testCompile "org.codehaus.groovy:groovy:2.5.4"
