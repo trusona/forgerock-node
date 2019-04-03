@@ -1,31 +1,26 @@
 package com.trusona.forgerock.node;
 
+import static com.trusona.forgerock.node.TrusonaOutcomes.ERROR_OUTCOME;
+
 import com.sun.identity.shared.debug.Debug;
 import com.trusona.forgerock.auth.TrusonaDebug;
+import java.util.function.Supplier;
 import org.apache.commons.lang3.StringUtils;
 import org.forgerock.openam.auth.node.api.Action;
 
-import java.util.function.Supplier;
-
-import static com.trusona.forgerock.node.TrusonaOutcomes.ERROR_OUTCOME;
-
 public class ErrorState implements Supplier<Action> {
+  private final static Debug debug = TrusonaDebug.getInstance();
+
   private final String error;
-  private final Debug debug;
-
-
-  public ErrorState(String error, Debug debug) {
-    this.error = error;
-    this.debug = debug;
-  }
 
   public ErrorState(String error) {
-    this(error, TrusonaDebug.getInstance());
+    this.error = error;
   }
 
   @Override
   public Action get() {
     debug.message("In ErrorState");
+
     if (StringUtils.isNotBlank(error)) {
       debug.error(error);
       return Action.goTo(ERROR_OUTCOME.id).build();
@@ -35,6 +30,6 @@ public class ErrorState implements Supplier<Action> {
 
   @Override
   public String toString() {
-    return "ErrorState[" + "error=\"" + error + "\"]";
+    return String.format("ErrorState[error=\"%s\"]", error);
   }
 }

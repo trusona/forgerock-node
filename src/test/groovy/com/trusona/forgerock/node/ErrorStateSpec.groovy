@@ -7,18 +7,16 @@ class ErrorStateSpec extends Specification {
 
   ErrorState sut
 
-  def "should log the error and go to the ERROR outcome"() {
+  def "should go to the ERROR outcome when in error"() {
     given:
     def error = "Something went wrong!"
-    def mockDebug = Mock(Debug)
 
-    sut = new ErrorState(error, mockDebug)
+    sut = new ErrorState(error)
 
     when:
     def res = sut.get()
 
     then:
-    ! mockDebug.error(error)
     ! res.sendingCallbacks()
     res.outcome == TrusonaOutcomes.ERROR_OUTCOME.id
   }

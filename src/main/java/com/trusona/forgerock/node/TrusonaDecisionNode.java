@@ -8,6 +8,7 @@ import static com.trusona.forgerock.node.TrusonaOutcomes.ERROR_OUTCOME;
 import static com.trusona.forgerock.node.TrusonaOutcomes.EXPIRED_OUTCOME;
 import static com.trusona.forgerock.node.TrusonaOutcomes.REJECTED_OUTCOME;
 
+import com.google.common.collect.ImmutableList;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import com.sun.identity.sm.DNMapper;
@@ -25,7 +26,6 @@ import com.trusona.sdk.resources.exception.TrusonaException;
 import java.net.URL;
 import java.util.List;
 import java.util.Set;
-import org.forgerock.guava.common.collect.ImmutableList;
 import org.forgerock.json.JsonValue;
 import org.forgerock.openam.annotations.sm.Attribute;
 import org.forgerock.openam.auth.node.api.Action;
@@ -40,6 +40,7 @@ import org.forgerock.util.i18n.PreferredLocales;
 @Node.Metadata(outcomeProvider = TrusonaDecisionNode.TrusonaOutcomeProvider.class,
   configClass = TrusonaDecisionNode.Config.class)
 public class TrusonaDecisionNode implements Node {
+
   private final Config config;
   private final CoreWrapper coreWrapper;
   private final StateDelegate stateDelegate;
@@ -51,7 +52,7 @@ public class TrusonaDecisionNode implements Node {
     this.coreWrapper = coreWrapper;
 
     TrusonaEnvironment trusonaEnvironment = new TrusonaEnvResolver().getEnvironment();
-    Trusona            trusona  = new Trusona(config.apiToken(), new String(config.apiSecret()), trusonaEnvironment);
+    Trusona trusona = new Trusona(config.apiToken(), new String(config.apiSecret()), trusonaEnvironment);
 
     String webSdkConfig;
 
@@ -69,7 +70,6 @@ public class TrusonaDecisionNode implements Node {
 
     TrusonaClient trusonaClient = new TrusonaClientV1(trusonaClientConfig);
 
-
     stateDelegate = new StateDelegate(
       new CallbackFactory(webSdkConfig, config.deeplinkUrl(), CALLBACK_ZERO),
       new Trusonaficator(trusona, config.action(), config.resource(), config.authenticationLevel()),
@@ -77,7 +77,7 @@ public class TrusonaDecisionNode implements Node {
       trusonaClient,
       config.userAliasList(),
       DNMapper::orgNameToDN
-      );
+    );
   }
 
   @Override
@@ -114,6 +114,7 @@ public class TrusonaDecisionNode implements Node {
   }
 
   public static class TrusonaOutcomeProvider implements OutcomeProvider {
+
     @Override
     public List<Outcome> getOutcomes(PreferredLocales preferredLocales, JsonValue jsonValue) {
       //TODO: Localization

@@ -4,6 +4,7 @@ import com.trusona.sdk.resources.dto.TrusonaficationStatus;
 import org.forgerock.openam.auth.node.api.OutcomeProvider.Outcome;
 
 public class TrusonaOutcomes {
+
   //TODO: Remove these classes and stick with just strings, since that is what the API uses.
   public static final Outcome ACCEPTED_OUTCOME = new Outcome(TrusonaficationStatus.ACCEPTED.name(), "Accepted");
   public static final Outcome REJECTED_OUTCOME = new Outcome(TrusonaficationStatus.REJECTED.name(), "Rejected");
