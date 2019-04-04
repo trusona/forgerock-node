@@ -9,7 +9,6 @@ import com.trusona.forgerock.auth.TrusonaDebug;
 import com.trusona.forgerock.auth.authenticator.Authenticator;
 import com.trusona.forgerock.auth.callback.CallbackFactory;
 import com.trusona.forgerock.auth.callback.TrucodeIdCallback;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Supplier;
 import org.apache.commons.lang3.StringUtils;
@@ -64,6 +63,6 @@ public class TrucodeState implements Supplier<Action> {
 
   @Override
   public String toString() {
-    return "TrucodeState[trucodeId=" + trucodeId.toString() + ", payload=" + Optional.ofNullable(payload).orElse("null") + "]";
+    return String.format("TrucodeState[trucodeId=%s, payload=%s]", trucodeId, payload);
   }
 }

@@ -11,8 +11,8 @@ public interface TrusonaDecisionNodeConfig {
   @Attribute(order = 1, validators = {RequiredValueValidator.class})
   String apiToken();
 
-  @Attribute(order = 2, validators = {RequiredValueValidator.class})
   @Password
+  @Attribute(order = 2, validators = {RequiredValueValidator.class})
   char[] apiSecret();
 
   @Attribute(order = 3, validators = {RequiredValueValidator.class})
