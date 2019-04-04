@@ -1,0 +1,8 @@
+
+import org.apache.tools.ant.filters.ReplaceTokens
+
+processResources {
+  filter ReplaceTokens, tokens: [
+    "project_version": project.version
+  ]
+}
