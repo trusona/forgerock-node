@@ -4,7 +4,7 @@
 
 ## Supported Versions
 
-The Trusona AM Authentication node is developed against and supported on version 5.5  and 6.0 of ForgeRock AM. For older versions of ForgeRock AM, Trusona also has a [ForgeRock AM Authentication Module](https://github.com/trusona/forgerock-module).
+The Trusona AM Authentication node is developed against and supported on version 6.5 of ForgeRock AM. For older versions of ForgeRock AM, Trusona also has a [ForgeRock AM Authentication Module](https://github.com/trusona/forgerock-module).
 
 
 ## Installation
@@ -20,7 +20,7 @@ Before configuring the node, make sure you have your Trusona API token and secre
 1. Trusona API Secret - The API secret you received from Trusona. This will be used to authenticate your node to Trusona's backend services.
 1. Authentication Level - The level that you want to authenticate the user at.
 1. Action - A string that will be used in the action field of a Trusonafication. See the following section for more details.
-1. Resource - string that will be used in the resoure field of a Trusonafication. See the following section for more details.
+1. Resource - string that will be used in the resource field of a Trusonafication. See the following section for more details.
 1. Deeplink URL - The URL that the user will be redirected to when they are on a mobile browser. This URL should be handled by the mobile app users will authenticate with. If not set, the user will be sent to the Trusona App.
 1. Alias Search Attributes - A list of attributes to use when looking up a ForgeRock user for a Trusona email address or `userIdentifier`. See [Mapping Trusona Users to ForgeRock Subjects](#mapping-trusona-users-to-forgerock-subjects) below for more information.
 
@@ -78,7 +78,7 @@ The node comes with a front end JavaScript app that handles the rendering of Tru
 Desktop users will see a TruCode in their browser that they will need to scan with their Trusona enabled mobile app. They will then receive a Trusonafication, which they can either accept or reject. If they accept, the node will continue down the `Accepted` outcome path.
 
 ### Mobile Users
-On mobile devices, instead of seeing a TruCode, to users will be deeplinked into their Trusona enabled mobile app, where they will be presented with a Trusonafication. Once accepted, the app will send the user back to the browser, where the node will continue down the `Accepted` outcome path.
+On mobile devices, instead of seeing a TruCode, users will be deeplinked into their Trusona enabled mobile app, where they will be presented with a Trusonafication. Once accepted, the app will send the user back to the browser, where the node will continue down the `Accepted` outcome path.
 
 ## Note
 When a user authenticates with Trusona, the username field is populated in shared state, which may overwrite any value put there by any other node that executed before Trusona.
