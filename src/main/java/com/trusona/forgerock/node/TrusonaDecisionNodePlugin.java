@@ -15,13 +15,12 @@ import org.forgerock.openam.sm.AnnotatedServiceRegistry;
 
 public class TrusonaDecisionNodePlugin extends AbstractNodeAmPlugin {
 
-  private final AnnotatedServiceRegistry serviceRegistry;
   private final String version;
 
   @Inject
   public TrusonaDecisionNodePlugin(AnnotatedServiceRegistry serviceRegistry) {
-    this.serviceRegistry = serviceRegistry;
     this.version = initVersion();
+    TrusonaDebug.getInstance().message("{} version is {}", getClass().getSimpleName(), version);
   }
 
   @Override
@@ -34,6 +33,9 @@ public class TrusonaDecisionNodePlugin extends AbstractNodeAmPlugin {
     switch (startupType) {
       case FIRST_TIME_INSTALL:
       case FIRST_TIME_DEMO_INSTALL:
+        install();
+        break;
+
       case NORMAL_STARTUP:
         start();
         break;
@@ -56,14 +58,22 @@ public class TrusonaDecisionNodePlugin extends AbstractNodeAmPlugin {
       TrusonaDebug.getInstance().error("failed to load version", e);
     }
 
-    return properties.getProperty("version", "unspecified");
+    return properties.getProperty("version", "unspecified")
+      .replace("-SNAPSHOT", "");
   }
 
   private void start() throws PluginException {
     for (Iterable<? extends Class<? extends Node>> iterable : getNodesByVersion().values()) {
       for (Class<? extends Node> clazz : iterable) {
-        pluginTools.installAuthNode(clazz);
         pluginTools.startAuthNode(clazz);
+      }
+    }
+  }
+
+  private void install() throws PluginException {
+    for (Iterable<? extends Class<? extends Node>> iterable : getNodesByVersion().values()) {
+      for (Class<? extends Node> clazz : iterable) {
+        pluginTools.installAuthNode(clazz);
       }
     }
   }

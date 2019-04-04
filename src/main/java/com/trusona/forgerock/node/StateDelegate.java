@@ -29,6 +29,7 @@ import org.forgerock.openam.auth.node.api.Action;
 import org.forgerock.openam.auth.node.api.TreeContext;
 
 public class StateDelegate {
+
   private final static Debug debug = TrusonaDebug.getInstance();
 
   private final CallbackFactory callbackFactory;

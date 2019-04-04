@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.forgerock.openam.auth.node.api.Action;
 
 public class ErrorState implements Supplier<Action> {
+
   private final static Debug debug = TrusonaDebug.getInstance();
 
   private final String error;
