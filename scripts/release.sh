@@ -63,5 +63,4 @@ if [[ $RESPONSE == y ]] || [[ $RESPONSE == Y ]]; then
 
   echo
   echo "version ${RELEASE_VERSION} released successfully; bumped master to next snapshot ${NEXT_VERSION}"
-
 fi

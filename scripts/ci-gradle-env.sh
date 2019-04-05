@@ -15,4 +15,3 @@ echo "CONTEXT_REPO_ROOT=${CONTEXT_REPO_ROOT}" >> ~/.gradle/gradle.properties
 
 echo "FORGEROCK_MAVEN_USERNAME=${FORGEROCK_MAVEN_USERNAME}" >> ~/.gradle/gradle.properties
 echo "FORGEROCK_MAVEN_PASSWORD=${FORGEROCK_MAVEN_PASSWORD}" >> ~/.gradle/gradle.properties
-
