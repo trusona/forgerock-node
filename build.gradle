@@ -8,7 +8,7 @@ buildscript {
   }
 
   dependencies {
-    classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.25.0"
+    classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.25.1"
     classpath "com.github.jengelman.gradle.plugins:shadow:6.1.0"
   }
 }
